@@ -5,6 +5,13 @@ terraform {
       version = "~>3.91.0"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name  = "cyf-videos"
+    storage_account_name = "cyfvideostfstate"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
