@@ -8,7 +8,13 @@ terraform {
 }
 
 provider "azurerm" {
+  skip_provider_registration = true
   features {
 
   }
+}
+
+resource "azurerm_resource_group" "cyf-videos" {
+  name     = "cyf-videos"
+  location = "UK South"
 }
