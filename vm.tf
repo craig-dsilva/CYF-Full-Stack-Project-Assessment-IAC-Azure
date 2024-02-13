@@ -27,3 +27,14 @@ resource "azurerm_linux_virtual_machine" "cyf_videos" {
     "Name" = "cyf-videos-server"
   }
 }
+
+resource "azurerm_network_security_group" "cyf_videos" {
+  name = "cyf-videos"
+  resource_group_name = azurerm_resource_group.cyf-videos.name
+  location = azurerm_resource_group.cyf-videos.location
+}
+
+resource "azurerm_network_interface_security_group_association" "cyf_videos" {
+  network_interface_id = azurerm_network_interface.cyf_videos_server.id
+  network_security_group_id = azurerm_network_security_group.cyf_videos.id
+}
