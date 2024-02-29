@@ -24,11 +24,3 @@ resource "azurerm_network_interface" "cyf_videos_server" {
     public_ip_address_id          = azurerm_public_ip.cyf_videos_server_public_ip.id
   }
 }
-
-resource "azurerm_public_ip" "cyf_videos_server_public_ip" {
-  name                = "cyf_videos_public_ip"
-  resource_group_name = azurerm_resource_group.cyf-videos.name
-  location            = azurerm_resource_group.cyf-videos.location
-  allocation_method   = "Dynamic"
-  domain_name_label   = "videorecommendations"
-}

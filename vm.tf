@@ -38,3 +38,11 @@ resource "azurerm_network_interface_security_group_association" "cyf_videos" {
   network_interface_id      = azurerm_network_interface.cyf_videos_server.id
   network_security_group_id = azurerm_network_security_group.cyf_videos.id
 }
+
+resource "azurerm_public_ip" "cyf_videos_server_public_ip" {
+  name                = "cyf-videos-server"
+  resource_group_name = azurerm_resource_group.cyf-videos.name
+  location            = azurerm_resource_group.cyf-videos.location
+  allocation_method   = "Dynamic"
+  domain_name_label   = "videorecommendations"
+}
